@@ -1,0 +1,43 @@
+
+:root{
+  --button: #3498db;
+  --button-hover:  #2980b9;
+  --bkinput: #3498db4f;
+  --bdinput: #2980b9;
+}
+.form{
+  display: flex;
+  width: 500px;
+  padding: 4px;
+  padding-left: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  background-color: var(--bkinput);
+  border-radius: 50px;
+  border: 1px solid var(--bdinput);
+}
+.form input{
+  width: 85%;
+  height: 40px;
+  background: none;
+  border: 0;
+  padding: 0;
+  outline: none;
+  font-size: 1.2em;
+}
+.form button{
+  height: 40px;
+  min-width: 94px;
+  background-color: var(--button);
+  color: #ffffff;
+  text-transform: uppercase;
+  border-style: none;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  transition: all ease-in-out 0.3s;
+}
+.form button:hover{
+  background-color: var(--button-hover);
+}
