@@ -23,7 +23,6 @@
   background: none;
   border: 0;
   padding: 0;
-  outline: none;
   font-size: 1.2em;
 }
 .form button{
@@ -35,7 +34,6 @@
   border-style: none;
   border-radius: 50px;
   cursor: pointer;
-  outline: none;
   transition: all ease-in-out 0.3s;
 }
 .form button:hover{

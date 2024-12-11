@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import './style.css'
-import { toast } from "react-toastify";
 interface FormProps {
   adicionarTarefas: (novatarefa: string) => void
 }
@@ -11,7 +10,6 @@ export function Form({adicionarTarefas}: FormProps){
   const handleSubmit = (e : React.FormEvent) =>{
     e.preventDefault()
     adicionarTarefas(input)
-    toast.success('Tarefa adicionada!')
     setInput('')
   }
 
@@ -23,7 +21,7 @@ export function Form({adicionarTarefas}: FormProps){
       id="itask"
       value={input}
       onChange={(e)=> setInput(e.target.value)}
-      placeholder="tarefas"
+      placeholder="adicione um tarefa"
       />
       <button>adicionar task</button>
     </form>

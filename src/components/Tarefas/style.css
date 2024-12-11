@@ -1,8 +1,10 @@
 :root{
-  --edit: #3498db;
-  --edit-hover:  #2980b9;
+  --save: #3498db;
+  --save-hover:  #2980b9;
   --trash: #e74c3c;
   --trash-hover: #c0392b;
+  --edit: #2ecc71;
+  --edit-hover: #27ae60;
 }
 .tarefasContainer{
   width: 100%;
@@ -13,8 +15,9 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 20px 50px;
+  margin: 20px 20px;
   flex-direction: column;
+
 }
 .itemTarefa{
   width: 100%;
@@ -22,7 +25,9 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+  padding-bottom: 20px;
   font-size: 1.2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.191);
 }
 .itenButtons{
   display: flex;
@@ -30,8 +35,8 @@
   gap: 20px;
 }
 .itenButtons > button{
-width: 60px;
-height: 40px;
+width: 55px;
+height: 38px;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -53,9 +58,27 @@ font-size: 1.1em;
 .trashButton:hover{
   background-color: var(--trash-hover);
 }
+.saveButton{
+  background-color: var(--save);
+  transition: all ease-in-out 0.3s;
+}
+.saveButton:hover{
+  background-color: var(--save-hover);
+}
 .editIcon{
   color: white;
 }
 .trashIcon{
   color: white;
 }
+.saveIcon{
+  color: white;
+}
+.itemText{
+  font-size: 1.1em;
+  padding: 5px;
+}
+.erro{
+  background-color: var(--trash);
+}
+
