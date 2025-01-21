@@ -22,6 +22,7 @@ export function Form({adicionarTarefas}: FormProps){
       value={input}
       onChange={(e)=> setInput(e.target.value)}
       placeholder="adicione um tarefa"
+      autoComplete="off"
       />
       <button>adicionar task</button>
     </form>
