@@ -1,9 +1,7 @@
-import React from "react";
+import React from "react"
 import './style.css'
-export function Header(){
+export default function Header(){
   return(
-    <div className="header">
-      <h1 className="titlePage">FocusFlow</h1>
-    </div>
+    <div className="header"> Header</div>
   )
 }

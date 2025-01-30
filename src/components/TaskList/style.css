@@ -1,0 +1,88 @@
+.taskListContainer{
+  background-color: white;
+  width: 100%;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.050);
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 0.8em;
+  font-family: 'Inter', sans-serif;
+  padding-left: 15px;
+  padding-right: 25px;
+}
+.taskListDescription{
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  background-color: white;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.041);
+}
+.taskListDescription > input{
+  cursor: default;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border: none;
+  background-color: white;
+
+}
+input::placeholder{
+  color: black;
+}
+.listItem{
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  font-size: 1.2em;
+  border: transparent;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.041);
+}
+.listItem > input{
+  display: flex;
+  align-items: center;
+  border: transparent;
+
+}
+.taskTittle{
+  padding-left: 10px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+}
+.taskTittle:focus{
+border: 1px solid #5cd68d;
+}
+.taskSec{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100px;
+}
+.taskSec *{
+  color: #5cd68d;
+  cursor: pointer;
+}
+.taskBt{
+  width: 30px;
+  height: 30px;
+}
+
+.taskBt{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50px;
+  border: none;
+  background-color: white;
+}
+.taskBt:focus{
+  border: 1px solid #5cd68d;
+}
+.taskBt *{
+  cursor: pointer;
+}
+.btTrash{
+  border: none;
+  background-color: white;
+}

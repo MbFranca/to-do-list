@@ -1,30 +1,29 @@
 import React, { useState } from "react"
 import './style.css'
-interface FormProps {
-  adicionarTarefas: (novatarefa: string) => void
+
+interface FormComponentProps {
+  onAddItem: (item:string) => void;
 }
-export function Form({adicionarTarefas}: FormProps){
 
-  const [input, setInput] = useState('');
-
-  const handleSubmit = (e : React.FormEvent) =>{
+export function Form({onAddItem}:FormComponentProps){
+  const [inputValue, setInputValue] = useState("")
+  const handleSubmit = (e: React.FormEvent) =>{
     e.preventDefault()
-    adicionarTarefas(input)
-    setInput('')
+    onAddItem(inputValue.charAt(0).toUpperCase() + inputValue.slice(1))
+    setInputValue("")
   }
-
   return(
     <form action="#" className="form" onSubmit={handleSubmit}>
+      <button title="Adicionar"> + </button>
       <input
+      onChange={(e)=> setInputValue(e.target.value)}
       type="text"
       name="task"
       id="itask"
-      value={input}
-      onChange={(e)=> setInput(e.target.value)}
-      placeholder="adicione um tarefa"
+      value={inputValue}
+      placeholder="Adicione um tarefa"
       autoComplete="off"
       />
-      <button>adicionar task</button>
     </form>
   )
 }

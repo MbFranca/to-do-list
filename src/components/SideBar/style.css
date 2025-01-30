@@ -1,0 +1,42 @@
+.sideBarContainer {
+  background-color: white;
+  width: 280px;
+  box-shadow: 2px 0px 5px #8888883d;
+  flex-direction: column;
+  display: flex;
+
+}
+.sideBarHeader{
+  width:100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.sideBarMenuButton{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 3px;
+  width: 15px;
+  height: 20px;
+  background-color: transparent;
+  border: none;
+}
+.collapsed{
+  width: 40px;
+  height: 40px;
+  box-shadow: none;
+  background-color: transparent;
+
+}
+.sideBarMenu{
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.404);
+  flex-grow: 1;
+  padding: 20px;
+}
+.hidden{
+  display: none;
+  opacity: 0; /* Inicialmente invisível */
+}
+
