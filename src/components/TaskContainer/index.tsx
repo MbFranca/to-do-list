@@ -26,7 +26,6 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
       return
     }
 
-
     setItems((prevItems) => {
       const updatedItems = prevItems.filter((item)=> item.id !== itemsToDelete);
       localStorage.setItem("items", JSON.stringify(updatedItems));
@@ -82,7 +81,7 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
         handleDeletTask={handleDeleteTask}
         ></TaskList>
       </div>
-      {showModel? <ModelDelete handleConfirmDelet={handleConfirmDelete}></ModelDelete>: ''}
+      {showModel? <ModelDelete handleConfirmDelet={handleConfirmDelete}  ></ModelDelete>: ''}
 
     </div>
   )

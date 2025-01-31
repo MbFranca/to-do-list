@@ -11,7 +11,7 @@ export default function ModelDelete({handleConfirmDelet}:ButtonDelete){
   return(
     <div className="modalContainer">
       <div className="modal">
-        <div className="modalText" id="text1">Excluir permanente a tarefa "Tarefa" ?</div>
+        <div className="modalText" id="text1">Excluir permanente essa tarefa ?</div>
         <div className="modalText"> Você não podera desfazer essa ação</div>
         <div className="ModalWrapper">
           <button id="btCancel" onClick={()=>handleClickBt(true)}> Cancelar </button>
