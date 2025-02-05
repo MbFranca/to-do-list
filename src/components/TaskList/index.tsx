@@ -2,25 +2,30 @@ import './style.css'
 import React from 'react'
 import {FaRegStar,FaRegCircle, FaTrash } from 'react-icons/fa'
 import {MdOutlineCalendarToday } from 'react-icons/md'
-interface TaskItem  {
-  id: string;
-  value: string;
-};
+import {TaskItem} from '../../utils/interface/taskItem.ts';
+
 interface TaskListProps {
   items: TaskItem[];
-  handleDeletTask: (id:string)=> void
+  handleDeletTask: (id:string)=> void;
+  handleComplete: (id:string)=> void;
 }
-export default function TaskList({items, handleDeletTask}:TaskListProps){
-  const clickToDelet = (idTask: string) => {
+
+export default function TaskList({items, handleDeletTask, handleComplete}:TaskListProps){
+  const clickToDelete = (idTask: string) => {
+
       handleDeletTask(idTask)
   };
+
+  const clickToComplete = (idTask: string) => {
+    handleComplete(idTask)
+};
   return(
     <div className='taskListContainer'>
       <div className='taskList'>
         <ul>
           {items.length == 0 ? '':
           <div className='taskListDescription'>
-            <button className='taskBt'></button>
+            <button className='taskBt' ></button>
             <input type='text' className='taskTittle' placeholder="Título" disabled></input>
             <input type='text' className='taskSec' placeholder="Vencimento" disabled></input>
             <input type='text' className='taskSec' placeholder="Urgência" disabled></input>
@@ -32,7 +37,9 @@ export default function TaskList({items, handleDeletTask}:TaskListProps){
             return <li key={item.id} className='listItem'>
               <button
                 className='taskBt'
-                title='concluir'>
+                title='concluir'
+                  onClick={()=>{clickToComplete(item.id)}}
+                >
                 <FaRegCircle></FaRegCircle>
               </button>
               <input className='taskTittle' value={item.value}></input>
@@ -48,7 +55,7 @@ export default function TaskList({items, handleDeletTask}:TaskListProps){
               <div className='taskSec taskTrash'>
                 <button
                   className='btTrash'
-                  onClick={()=>clickToDelet(item.id)}>
+                  onClick={()=>clickToDelete(item.id)}>
                   <FaTrash title='Excluir tarefa'>
                   </FaTrash>
                 </button>
@@ -58,5 +65,6 @@ export default function TaskList({items, handleDeletTask}:TaskListProps){
         </ul>
       </div>
     </div>
+
   )
 }

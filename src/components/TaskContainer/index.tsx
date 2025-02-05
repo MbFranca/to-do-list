@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React, { use, useEffect, useState } from "react"
 import './style.css'
 import { FaBars } from "react-icons/fa6"
 import TaskList from "../TaskList/index.tsx"
 import { Form } from "../Form/index.tsx"
 import { v4 as generateUUID } from "uuid";
 import ModelDelete from "../ModelDelete/index.tsx"
+import TaskComplete from "../TaskComplete/index.tsx"
 
 export default function TaskContainer({buttonStatus, toggleBtStatus}){
   // task estado
@@ -12,10 +13,32 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
   const [items, setItems] = useState<{ id: string; value: string }[]>([]);
   const [itemsToDelete, setItemsToDelete] = useState<String|null>(null);
   const [showModel, setShowModel] = useState(false)
+  const [taskComplete, setTaskComplete] = useState<{ id: string; value: string }[]>([]);
 
+  // handle completed task
+  //nao usamos, prev para obter o estado mais atualizado do storage
+  const handleCompleteTask = (taskId: string) => {
+    const taskCompleted = items.find((task) => task.id === taskId);
+    if (!taskCompleted) return;
+    const storedCompletedTasks = localStorage.getItem("CompletedTasks");
+    const completedTasksArray = storedCompletedTasks ? JSON.parse(storedCompletedTasks) : [];
+    const updatedCompletedTasks = [...completedTasksArray, taskCompleted];
+    setTaskComplete(updatedCompletedTasks);
+      localStorage.setItem("CompletedTasks", JSON.stringify(updatedCompletedTasks));
+
+    setItems((prevItems) => {
+      const updatedItems = prevItems.filter((task) => task.id !== taskId);
+      localStorage.setItem("items", JSON.stringify(updatedItems));
+      return updatedItems;
+    });
+  };
+
+
+  // chamar tela de delete
   const handleDeleteTask = (taskId: string) => {
     setItemsToDelete(taskId);
     setShowModel(true);
+
   }
   //Deletar task
   const handleConfirmDelete = (clikBt:boolean) =>{
@@ -45,7 +68,7 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
       });
     }
   };
-  //GET do localstorage
+  //GET das tasks pendentes
   useEffect(() => {
     const storedItems = localStorage.getItem("items");
     if (storedItems) {
@@ -64,6 +87,19 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
       console.log("No items found in localStorage.");
     }
   }, []);
+    //GET das tasks completas
+    useEffect(()=>{
+      const storedCompletedTasks  = localStorage.getItem("CompletedTasks")
+      if(storedCompletedTasks ){
+        try {
+          const parsedItems = JSON.parse(storedCompletedTasks )
+          if(Array.isArray(parsedItems))
+            setTaskComplete(parsedItems)
+        } catch (e) {
+          console.log(e)
+        }
+      }
+    },[])
 
   return(
     <div className="taskContainer">
@@ -77,9 +113,8 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
           menu
         <Form onAddItem={handleAddItem}></Form>
         </div>
-        <TaskList items={items}
-        handleDeletTask={handleDeleteTask}
-        ></TaskList>
+        <TaskList items={items} handleDeletTask={handleDeleteTask} handleComplete={handleCompleteTask}></TaskList>
+        <TaskComplete taskComplete={taskComplete}></TaskComplete>
       </div>
       {showModel? <ModelDelete handleConfirmDelet={handleConfirmDelete}  ></ModelDelete>: ''}
 

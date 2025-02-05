@@ -25,10 +25,9 @@
   background: none;
   border: 0;
   font-size: 1.2em;
-  color: #2564cf;
 }
 .form input::placeholder{
-  color: #2564cf;
+  color: #5CD68D;
 }
 .form button{
   display: flex;
@@ -38,7 +37,7 @@
   border-style: none;
   cursor: pointer;
   transition: all ease-in-out 0.3s;
-  color: #2564cf;
+  color: #5CD68D;
   margin-right: 10px;
   font-size: 1.8em;
   background-color: white;
