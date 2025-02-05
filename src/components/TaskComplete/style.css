@@ -1,0 +1,112 @@
+.taskCompletedContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+  align-items: self-start;
+}
+.hidden{
+  display: none;
+}
+.buttonCompleted{
+  min-width: 200px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.1em;
+  cursor: pointer;
+  outline: none;
+}
+.arrow{
+  font-size: 0.7em;
+}
+.taskCompletedWrapper{
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.050);
+  margin-top: 20px;
+  border-radius: 8px;
+  font-size: 0.8em;
+  font-family: 'Inter', sans-serif;
+  padding-left: 15px;
+  padding-right: 25px;
+  animation: showUp 0.2s ease-in-out;
+}
+@keyframes showUp {
+  0%{
+    transform: translateY(-25%);
+    opacity: 0;}
+  100%{
+    transform: translateY(0);
+    opacity: 1;}
+}
+.listTittle{
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  background-color: white;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.041);
+}
+.listItem{
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  font-size: 1.2em;
+  border: transparent;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.041);
+}
+.listItem > input{
+  display: flex;
+  align-items: center;
+  border: transparent;
+
+}
+.taskTittle{
+  padding-left: 10px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+}
+.taskTittle:focus{
+border: 1px solid #5CD68D;
+}
+.taskSec{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100px;
+
+}
+.taskSec *{
+  color: #5CD68D;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.taskBt{
+  width: 30px;
+  height: 30px;
+}
+
+.taskBt{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50px;
+  border: none;
+  background-color: white;
+}
+.taskBt:focus{
+  border: 1px solid #5CD68D;
+}
+.taskBt *{
+  cursor: pointer;
+}
+.btTrash{
+  border: none;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

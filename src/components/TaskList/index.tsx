@@ -12,13 +12,13 @@ interface TaskListProps {
 
 export default function TaskList({items, handleDeletTask, handleComplete}:TaskListProps){
   const clickToDelete = (idTask: string) => {
-
       handleDeletTask(idTask)
   };
 
   const clickToComplete = (idTask: string) => {
     handleComplete(idTask)
 };
+
   return(
     <div className='taskListContainer'>
       <div className='taskList'>

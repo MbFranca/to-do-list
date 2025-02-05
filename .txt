@@ -1,0 +1,4 @@
+Na hora de deletar (handleConfirmDelete), usamos prevTasks dentro do setTaskComplete para garantir que estamos removendo do estado mais atualizado. Isso evita possíveis problemas de concorrência onde o React ainda não aplicou a última atualização ao estado quando tentamos modificar novamente.
+
+Na hora de adicionar (handleCompleteTask), não usamos prevTasks diretamente porque o novo item (taskCompleted) vem da lista items e não do estado taskComplete. O problema é que o estado do React pode ser assíncrono, então se tentássemos algo como:
+

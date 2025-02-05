@@ -36,24 +36,32 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
 
   // chamar tela de delete
   const handleDeleteTask = (taskId: string) => {
+    console.log('OPS 1')
     setItemsToDelete(taskId);
     setShowModel(true);
 
   }
   //Deletar task
   const handleConfirmDelete = (clikBt:boolean) =>{
-    if (!itemsToDelete) return;
+    console.log('OPS 2')
+    if (!itemsToDelete) {
+      return;
+    }
     if (clikBt) {
       setItemsToDelete('');
       setShowModel(false);
       return
     }
-
     setItems((prevItems) => {
       const updatedItems = prevItems.filter((item)=> item.id !== itemsToDelete);
       localStorage.setItem("items", JSON.stringify(updatedItems));
       return updatedItems
     })
+    setTaskComplete((prevTasks) => {
+      const updatedTasks = prevTasks.filter((task) => task.id !== itemsToDelete);
+      localStorage.setItem("CompletedTasks", JSON.stringify(updatedTasks));
+      return updatedTasks;
+    });
     setItemsToDelete('');
     setShowModel(false);
   }
@@ -114,7 +122,7 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
         <Form onAddItem={handleAddItem}></Form>
         </div>
         <TaskList items={items} handleDeletTask={handleDeleteTask} handleComplete={handleCompleteTask}></TaskList>
-        <TaskComplete taskComplete={taskComplete}></TaskComplete>
+        <TaskComplete taskComplete={taskComplete} handleDeletTask={handleDeleteTask}></TaskComplete>
       </div>
       {showModel? <ModelDelete handleConfirmDelet={handleConfirmDelete}  ></ModelDelete>: ''}
 
