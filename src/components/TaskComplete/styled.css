@@ -1,14 +1,17 @@
-.taskCompletedContainer{
+/* TaskComplete Component CSS */
+.taskCompletedContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 40px;
   align-items: self-start;
+  margin: 20px 0px;
 }
-.hidden{
+
+.hidden {
   display: none;
 }
-.buttonCompleted{
+
+.buttonCompleted {
   min-width: 200px;
   background-color: transparent;
   border: none;
@@ -16,10 +19,12 @@
   cursor: pointer;
   outline: none;
 }
-.arrow{
+
+.arrow {
   font-size: 0.7em;
 }
-.taskCompletedWrapper{
+
+.taskCompletedWrapper {
   background-color: rgb(255, 255, 255);
   width: 100%;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.050);
@@ -27,26 +32,39 @@
   border-radius: 8px;
   font-size: 0.8em;
   font-family: 'Inter', sans-serif;
-  padding-left: 15px;
-  padding-right: 25px;
   animation: showUp 0.2s ease-in-out;
 }
-@keyframes showUp {
-  0%{
-    transform: translateY(-25%);
-    opacity: 0;}
-  100%{
-    transform: translateY(0);
-    opacity: 1;}
+.taskCompletedWrapper > ul{
+  padding: 0;
 }
-.listTittle{
+@keyframes showUp {
+  0% {
+    transform: translateY(-25%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.taskTittleComplete {
   display: flex;
   flex-direction: row;
   height: 40px;
   background-color: white;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.041);
+  padding-left: 10px;
+  width: 600px;
+  display: flex;
+  align-items: center;
+  color: rgb(49, 49, 49);
+  text-decoration: line-through;
 }
-.listItem{
+.taskTittle:focus {
+  border: 1px solid #5CD68D;
+}
+.listItem {
   display: flex;
   flex-direction: row;
   height: 40px;
@@ -54,41 +72,35 @@
   border: transparent;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.041);
 }
-.listItem > input{
+
+.listItem > input {
   display: flex;
   align-items: center;
   border: transparent;
+}
 
-}
-.taskTittle{
-  padding-left: 10px;
-  width: 600px;
-  display: flex;
-  align-items: center;
-}
-.taskTittle:focus{
-border: 1px solid #5CD68D;
-}
-.taskSec{
+
+.taskSec {
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
   width: 100px;
-
 }
-.taskSec *{
+
+.taskSec * {
   color: #5CD68D;
   cursor: pointer;
   align-items: center;
   justify-content: center;
 }
-.taskBt{
+
+.taskBt {
   width: 30px;
   height: 30px;
 }
 
-.taskBt{
+.taskBt {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,16 +109,42 @@ border: 1px solid #5CD68D;
   border: none;
   background-color: white;
 }
-.taskBt:focus{
-  border: 1px solid #5CD68D;
-}
-.taskBt *{
+.taskBt * {
   cursor: pointer;
 }
-.btTrash{
+
+.btTrash {
   border: none;
   background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .buttonCompleted {
+    font-size: 1em;
+    width: 100%;
+  }
+
+  .taskCompletedWrapper {
+    padding: 10px;
+  }
+
+  .listItem {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .taskTittle {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .taskSec {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
 }

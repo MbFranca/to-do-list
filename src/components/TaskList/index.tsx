@@ -3,14 +3,16 @@ import React from 'react'
 import {FaRegStar,FaRegCircle, FaTrash } from 'react-icons/fa'
 import {MdOutlineCalendarToday } from 'react-icons/md'
 import {TaskItem} from '../../utils/interface/taskItem.ts';
+import { FaStar } from 'react-icons/fa6';
 
 interface TaskListProps {
   items: TaskItem[];
   handleDeletTask: (id:string)=> void;
   handleComplete: (id:string)=> void;
+  handleAddImportant  : (id: string) => void;
 }
 
-export default function TaskList({items, handleDeletTask, handleComplete}:TaskListProps){
+export default function TaskList({items, handleDeletTask, handleComplete, handleAddImportant}:TaskListProps){
   const clickToDelete = (idTask: string) => {
       handleDeletTask(idTask)
   };
@@ -18,6 +20,9 @@ export default function TaskList({items, handleDeletTask, handleComplete}:TaskLi
   const clickToComplete = (idTask: string) => {
     handleComplete(idTask)
 };
+const toggleImportantStatus = (idTask: string) =>{
+  handleAddImportant (idTask)
+}
 
   return(
     <div className='taskListContainer'>
@@ -28,7 +33,8 @@ export default function TaskList({items, handleDeletTask, handleComplete}:TaskLi
             <button className='taskBt' ></button>
             <input type='text' className='taskTittle' placeholder="Título" disabled></input>
             <input type='text' className='taskSec' placeholder="Vencimento" disabled></input>
-            <input type='text' className='taskSec' placeholder="Urgência" disabled></input>
+            <input type='text' className='taskSec' placeholder="Favoritos" disabled></input>
+            <input type='text' className='taskSec' placeholder="" disabled></input>
           </div>}
           {items
           .slice() // cria cópia sem mudar o original
@@ -42,15 +48,19 @@ export default function TaskList({items, handleDeletTask, handleComplete}:TaskLi
                 >
                 <FaRegCircle></FaRegCircle>
               </button>
-              <input className='taskTittle' value={item.value}></input>
+              <input className='taskTittle' value={item.value} disabled></input>
               <div
                 className='taskSec'>
                 <MdOutlineCalendarToday title='Vencimento'>
                 </MdOutlineCalendarToday>
               </div>
               <div className='taskSec'>
-                <FaRegStar title='Favoritos'>
-                </FaRegStar>
+                {item.favorite ?
+                    <FaStar title='Favoritos'
+                       onClick={ ()=> toggleImportantStatus(item.id)}></FaStar>
+                       :
+                    <FaRegStar title='Favoritos'
+                       onClick={ ()=> toggleImportantStatus(item.id)}></FaRegStar>}
               </div>
               <div className='taskSec taskTrash'>
                 <button

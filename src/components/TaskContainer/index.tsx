@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import './style.css'
 import { FaBars } from "react-icons/fa6"
 import TaskList from "../TaskList/index.tsx"
@@ -6,23 +6,50 @@ import { Form } from "../Form/index.tsx"
 import { v4 as generateUUID } from "uuid";
 import ModelDelete from "../ModelDelete/index.tsx"
 import TaskComplete from "../TaskComplete/index.tsx"
+import {Task} from "../../utils/interface/taskItem.ts"
+import { toast } from "react-toastify"
 
 export default function TaskContainer({buttonStatus, toggleBtStatus}){
   // task estado
   // ou atribui diretamente ou atribui com o retorno de uma fn
-  const [items, setItems] = useState<{ id: string; value: string }[]>([]);
+  const [items, setItems] = useState<Task[]>([]);
+  const [taskComplete, setTaskComplete] = useState<Task[]>([]);
   const [itemsToDelete, setItemsToDelete] = useState<String|null>(null);
   const [showModel, setShowModel] = useState(false)
-  const [taskComplete, setTaskComplete] = useState<{ id: string; value: string }[]>([]);
+
+  // adicionar completas aos favoritos
+  const handleAddImportant  = (taskId: string) => {
+    setItems((prevItem) => {
+    const updatedItems = prevItem.map((task)=> task.id === taskId ? {...task, favorite: !task.favorite}: task);
+    localStorage.setItem("items", JSON.stringify(updatedItems));
+    return updatedItems
+  })};
+
+  // handle para passar de completed para pending
+  const handlePending = (taskId: string) =>{
+    const taskToRestore = taskComplete.find((task) => task.id === taskId);
+    if (!taskToRestore) return;
+
+    setTaskComplete((prevTasks) => {
+      const updatedTasks = prevTasks.filter((task) => task.id !== taskId);
+      localStorage.setItem("CompletedTasks", JSON.stringify(updatedTasks));
+      return updatedTasks
+    });
+    setItems((prevItem) => {
+      const updatedItems = [...prevItem, taskToRestore]
+      localStorage.setItem("items", JSON.stringify(updatedItems));
+      return updatedItems
+    });
+  }
 
   // handle completed task
   //nao usamos, prev para obter o estado mais atualizado do storage
   const handleCompleteTask = (taskId: string) => {
-    const taskCompleted = items.find((task) => task.id === taskId);
-    if (!taskCompleted) return;
-    const storedCompletedTasks = localStorage.getItem("CompletedTasks");
-    const completedTasksArray = storedCompletedTasks ? JSON.parse(storedCompletedTasks) : [];
-    const updatedCompletedTasks = [...completedTasksArray, taskCompleted];
+    const taskCompleted = items.find((task) => task.id === taskId); // acha
+    if (!taskCompleted) return; // caso nao ache
+    const storedCompletedTasks = localStorage.getItem("CompletedTasks"); // pega do local
+    const completedTasksArray = storedCompletedTasks ? JSON.parse(storedCompletedTasks) : [];// oq retornar
+    const updatedCompletedTasks = [...completedTasksArray, taskCompleted];// constante com o array atualizado
     setTaskComplete(updatedCompletedTasks);
       localStorage.setItem("CompletedTasks", JSON.stringify(updatedCompletedTasks));
 
@@ -64,17 +91,19 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
     });
     setItemsToDelete('');
     setShowModel(false);
+    toast.success('Tarefa excluida !')
   }
   // adiciona Task
   const handleAddItem = (newItem: string) => {
     if (newItem.trim() !== "") {
-      const newItemObject = { id: generateUUID(), value: newItem };
+      const newItemObject = { id: generateUUID(), value: newItem, favorite: false };
       setItems((prevItems) => {
         const updatedItems = [...prevItems, newItemObject];
         localStorage.setItem("items", JSON.stringify(updatedItems));
         return updatedItems;
       });
     }
+    toast.success('Tarefa adicionada !')
   };
   //GET das tasks pendentes
   useEffect(() => {
@@ -109,6 +138,7 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
       }
     },[])
 
+
   return(
     <div className="taskContainer">
       <div className="taskHeaderContainer">
@@ -118,11 +148,18 @@ export default function TaskContainer({buttonStatus, toggleBtStatus}){
       </div>
       <div className="taskMainContainer">
         <div className="formContainer">
-          menu
+          <div className="formContainerHeader">
+              <span>Menu</span>
+          </div>
         <Form onAddItem={handleAddItem}></Form>
         </div>
-        <TaskList items={items} handleDeletTask={handleDeleteTask} handleComplete={handleCompleteTask}></TaskList>
-        <TaskComplete taskComplete={taskComplete} handleDeletTask={handleDeleteTask}></TaskComplete>
+        <TaskList items={items}
+        handleDeletTask={handleDeleteTask}
+        handleComplete={handleCompleteTask}
+        handleAddImportant ={handleAddImportant}></TaskList>
+        <TaskComplete taskComplete={taskComplete}
+        handleDeletTask={handleDeleteTask}
+        handlePending={handlePending}></TaskComplete>
       </div>
       {showModel? <ModelDelete handleConfirmDelet={handleConfirmDelete}  ></ModelDelete>: ''}
 

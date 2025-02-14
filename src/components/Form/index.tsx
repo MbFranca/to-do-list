@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useRef, useEffect, useState } from "react"
 import './style.css'
 
 interface FormComponentProps {
@@ -7,6 +7,7 @@ interface FormComponentProps {
 
 export function Form({onAddItem}:FormComponentProps){
   const [inputValue, setInputValue] = useState("")
+
   const handleSubmit = (e: React.FormEvent) =>{
     e.preventDefault()
     onAddItem(inputValue.charAt(0).toUpperCase() + inputValue.slice(1))
