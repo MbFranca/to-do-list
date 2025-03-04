@@ -3,9 +3,11 @@
   width: 100%;
   font-size: 0.8em;
   font-family: 'Inter', sans-serif;
-  overflow-y: hidden; /* Remove a rolagem no container externo */
+  overflow-y: hidden;
+  /* Remove a rolagem no container externo */
   max-height: 400px;
-  position: relative; /* Necessário para o sticky funcionar corretamente dentro do contêiner */
+  position: relative;
+  /* Necessário para o sticky funcionar corretamente dentro do contêiner */
 }
 
 .taskList {
@@ -19,7 +21,7 @@
 
 }
 
-.taskList > ul {
+.taskList>ul {
   padding: 0;
   margin: 0;
 }
@@ -30,13 +32,17 @@
   height: 40px;
   background-color: white;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.041);
-  position: sticky; /* Fixa no topo */
-  top: 0; /* Fica no topo do contêiner */
-  z-index: 2; /* Garante que fique acima dos outros elementos */
-  width: 100%; /* Garante que ocupe toda a largura */
+  position: sticky;
+  /* Fixa no topo */
+  top: 0;
+  /* Fica no topo do contêiner */
+  z-index: 2;
+  /* Garante que fique acima dos outros elementos */
+  width: 100%;
+  /* Garante que ocupe toda a largura */
 }
 
-.taskListDescription > input {
+.taskListDescription>input {
   cursor: default;
   display: flex;
   align-items: center;
@@ -44,9 +50,11 @@
   border: none;
   background-color: white;
 }
-.taskBt{
+
+.taskBt {
   border: none;
 }
+
 input::placeholder {
   color: black;
 }
@@ -60,7 +68,7 @@ input::placeholder {
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.041);
 }
 
-.listItem > input {
+.listItem>input {
   display: flex;
   align-items: center;
   border: transparent;

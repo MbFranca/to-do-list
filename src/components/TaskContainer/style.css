@@ -1,13 +1,10 @@
-.formContainerHeader{
-  height: 30px;
-  margin: 10px 0px ;
-}
 .taskContainer {
   flex-grow: 1;
   display: flex;
   align-items: flex-start;
   gap: 1em;
 }
+
 .mainMenuButton {
   font-size: 24px;
   background-color: transparent;
@@ -15,18 +12,29 @@
   color: #004D40;
   margin-top: 15px;
 }
+
 .taskMainContainer {
   display: flex;
   flex-direction: column;
   max-height: 100%;
-  box-sizing: border-box; /* Inclui padding e border na largura */
-  width: 90%; /* Garante que ocupe 100% da largura do container pai */
+  box-sizing: border-box;
+  /* Inclui padding e border na largura */
+  width: 90%;
+  /* Garante que ocupe 100% da largura do container pai */
   margin: 0 auto;
 }
-.formContainer{
+
+.formContainer {
   width: 100%;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
+}
+
+.headerInformations {
+  display: flex;
+
+  gap: 2em;
+
 }

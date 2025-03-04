@@ -4,14 +4,17 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fundo semitransparente */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Garante que o modal apareça acima de outros elementos */
+  z-index: 1000;
+  /* Garante que o modal apareça acima de outros elementos */
   font-family: 'Inter', sans-serif;
 }
-.modal{
+
+.modal {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -22,18 +25,21 @@
   background-color: white;
   box-shadow: 1px 1px 20px 3px #0000004d;
 }
-.modalText{
+
+.modalText {
   text-align: start;
   width: 100%;
   margin-top: 10px;
   font-size: 0.9em;
   color: rgba(0, 0, 0, 0.541);
 }
-#text1{
+
+#text1 {
   font-size: 1.1em;
   color: black;
 }
-.ModalWrapper{
+
+.ModalWrapper {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -41,14 +47,16 @@
   width: 100%;
   gap: 1.5em;
 }
-.ModalWrapper > button{
-  width:90px;
-  height:40px;
+
+.ModalWrapper>button {
+  width: 90px;
+  height: 40px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
 }
-#btExcluir{
+
+#btExcluir {
   background-color: rgb(170, 0, 0);
   color: white;
 

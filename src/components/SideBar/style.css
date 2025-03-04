@@ -1,7 +1,7 @@
-
 .sideBarContainer {
   background-color: white;
-  width: 232.41px; /* Largura fixa da sidebar */
+  width: 232.41px;
+  /* Largura fixa da sidebar */
   box-shadow: 2px 0px 5px #8888883d;
   flex-direction: column;
   display: flex;
@@ -12,7 +12,8 @@
 
 /* Sidebar colapsada */
 .sideBarContainer.collapsed {
-  width: 40px; /* Largura reduzida ao colapsar */
+  width: 40px;
+  /* Largura reduzida ao colapsar */
 }
 
 
@@ -50,7 +51,8 @@
 
 @media (max-width: 1024px) {
   .sideBarContainer {
-    width: 232.41px; /* Garantir que a largura da sidebar fique fixa até 1024px */
+    width: 232.41px;
+    /* Garantir que a largura da sidebar fique fixa até 1024px */
   }
 }
 
@@ -62,10 +64,12 @@
     left: 0;
     height: 100vh;
     z-index: 1000;
-    width: 232.41px; /* Largura fixa mesmo em telas pequenas */
+    width: 232.41px;
+    /* Largura fixa mesmo em telas pequenas */
   }
 
   .collapsed {
-    width: 40px; /* Largura reduzida no colapso */
+    width: 40px;
+    /* Largura reduzida no colapso */
   }
 }
