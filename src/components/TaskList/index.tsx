@@ -30,13 +30,12 @@ export default function TaskList({
   const toggleImportantStatus = (idTask: string) => {
     handleAddImportant(idTask);
   };
-  
+
   const filteredItems =
   !groupFilter || groupFilter === "all"
     ? items
     : items.filter((item) => item.group === groupFilter);
 
-  console.log(groupFilter);
   return (
     <div className="taskListContainer">
       <div className="taskList">

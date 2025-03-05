@@ -1,18 +1,22 @@
 .header {
   background: #004D40;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 0px;
   width: 100%;
+  height: 70px;
 }
 
 h1 {
   color: white;
   font-size: 2rem;
   margin: 0;
+  margin-left: 20px;
 }
-
+.login{
+  margin-right: 20px;
+}
 @media (max-width: 1024px) {
   .header {
     padding: 10px;

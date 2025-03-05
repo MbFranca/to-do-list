@@ -1,0 +1,55 @@
+/* src/components/Register/styled.css */
+
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  background-color: #f4f4f4; /* Fundo claro */
+}
+
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* Tamanho máximo para o formulário */
+  padding: 20px;
+  background-color: #fff; /* Fundo branco */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.registerForm input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px; /* Espaçamento entre os inputs */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Inclui o padding no tamanho total */
+}
+
+.registerForm button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #00796b; /* Cor do botão */
+  color: white;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.registerForm button:hover {
+  background-color: #004d40; /* Cor de hover */
+}
+
+.errorMessage {
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 10px;
+}

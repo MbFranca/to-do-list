@@ -1,0 +1,72 @@
+/* src/components/Login/styled.css */
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Usar min-height ao invés de height */
+  background-color: #e0f7fa; /* Fundo suave para a página de login */
+  overflow: hidden; /* Impedir rolagem */
+  flex-grow: 1;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* Tamanho máximo para o formulário */
+  padding: 20px;
+  background-color: #fff; /* Fundo branco */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-sizing: border-box; /* Certifique-se de que o padding está incluído no tamanho */
+}
+
+.loginForm input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px; /* Espaçamento entre os inputs */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Inclui o padding no tamanho total */
+}
+
+.loginForm button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: #00796b; /* Cor do botão */
+  color: white;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loginForm button:hover {
+  background-color: #004d40; /* Cor de hover */
+}
+
+.errorMessage {
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 10px;
+}
+
+.registerLink {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.registerLink a {
+  color: #00796b;
+  text-decoration: none;
+}
+
+.registerLink a:hover {
+  text-decoration: underline;
+}

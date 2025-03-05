@@ -19,10 +19,13 @@ export default function TaskContainer({ buttonStatus, toggleBtStatus }) {
   const [showModel, setShowModel] = useState(false);
   const [group, setGroups] = useState<string[]>([]);
   const [groupSelected, setGroupSelected] = useState("")
+
+
   //separar por Grupo
   const handleSelectGroup = (groupSelected: string) => {
     setGroupSelected(groupSelected)
   };
+
   // adicionar completas aos favoritos
   const handleAddImportant = (taskId: string) => {
     setItems((prevItem) => {
