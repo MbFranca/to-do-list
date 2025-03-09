@@ -4,33 +4,43 @@ services:
   db:
     image: postgres:13
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tododb
     ports:
       - "5432:5432"
     volumes:
-      - ./pg_data:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql/data
     networks:
-      - postgres_network
+      - todo_list_network
+    restart: always
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "user", "-d", "tododb"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 5s
 
   redis:
     image: redis:alpine
     environment:
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      REDIS_PASSWORD: mypassword
     ports:
       - "6379:6379"
-    volumes:
-      - ./redis_data:/data
     networks:
-      - postgres_network
-
-volumes:
-  postgres_data:
-    external: false
-  redis_data:
-    external: false
+      - todo_list_network
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "mypassword", "ping"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 5s
 
 networks:
-  postgres_network:
+  todo_list_network:
     driver: bridge
+
+volumes:
+  pg_data:
+    driver: local

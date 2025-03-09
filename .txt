@@ -2,4 +2,4 @@ Na hora de deletar (handleConfirmDelete), usamos prevTasks dentro do setTaskComp
 
 Na hora de adicionar (handleCompleteTask), não usamos prevTasks diretamente porque o novo item (taskCompleted) vem da lista items e não do estado taskComplete. O problema é que o estado do React pode ser assíncrono, então se tentássemos algo como:
 
- usar new SET para tirar valores repitidos e ... antes trasforma em array nocvamnte 
+ usar new SET para tirar valores repitidos e ... antes trasforma em array nocvamnte
